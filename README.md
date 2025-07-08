@@ -1,21 +1,9 @@
-# CafeLink
+# I want to stay somewhere. I want easy places to find that offer accomedations
+I want to make traveling easier. I want to make going on vacations easier.
+I want to budget for traveling easier. I want to have a list of essentials my app will remind me so I don't have anxiety about. 
 
-CafeLink is a chat application that allows users to chat with each other in real-time. It is a simple and easy to use application that allows users to chat with each other in real-time. You can use it to track who you had coffee chats with, when you had them, and what you talked about. You'll also be able to keep track of all their social media platforms by viewing their profiles. Designed to reduce friction of setting up cal.com and keeping track of coffee chats at the same time.
 
-# Features
-
-- Authentication
-    - Google authentication
-- Calendar
-    - cal.com integration
-    - Google Calendar integration
-- Chat
-    - Real-time text chat
-    - Google Meet integration
-- Track coffee chats
-    - Date and time
-    - Notes
-    - Profile of person you chatted with
-- Profile
-    - Social media platforms
-    - Number of coffee chats
+1. Close places to venues
+2. travel options from/to airport
+3. cost of travel from day x to day x
+4. food places with good average reviews
