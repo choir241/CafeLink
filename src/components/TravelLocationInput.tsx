@@ -5,8 +5,8 @@ export default function TravelLocationInput({
   location,
 }: {
   onChangeEventHandler: Dispatch<
-      SetStateAction<{ country: string; city: string; state: string }>
-    >
+    SetStateAction<{ country: string; city: string; state: string }>
+  >;
   location: string;
 }) {
   return (

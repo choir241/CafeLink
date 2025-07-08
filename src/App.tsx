@@ -1,10 +1,7 @@
-// Landing page will be a. where are you staying
-// where are you coming from
-// -> b. will be just city, country
-// can be signed in or guest
-
-import TravelLocationInput from "./components/TextInput";
-import { useState, useEffect } from "react";
+import TravelLocationInput from "./components/TravelLocationInput";
+import TravelDatesInput from "./components/TravelDatesInput";
+import { useState } from "react";
+import Button from "./components/Button";
 
 export default function App() {
   const [stayingAt, setStayingAt] = useState({
@@ -18,20 +15,50 @@ export default function App() {
     state: "",
   });
 
-  useEffect(() => {
-    console.log(departingFrom);
-    console.log(stayingAt);
-  }, [departingFrom, stayingAt]);
+  const [dates, setDates] = useState({
+    from: "",
+    to: ""
+  });
+
+  const locations = ["country", "city", "state"];
+
+  function generateTravelResources(){
+    console.log(departingFrom)
+    console.log(stayingAt)
+    console.log(dates)
+  }
 
   return (
     <>
-      <TravelLocationInput onChangeEventHandler={setDepartingFrom} location={"country"} />
-      <TravelLocationInput onChangeEventHandler={setDepartingFrom} location={"city"} />
-      <TravelLocationInput onChangeEventHandler={setDepartingFrom} location={"state"} />
+      <h2>Departing From</h2>
+      {locations.map((location) => {
+        return (
+          <TravelLocationInput
+            key={location}
+            onChangeEventHandler={setDepartingFrom}
+            location={location}
+          />
+        );
+      })}
 
-      <TravelLocationInput onChangeEventHandler={setStayingAt} location={"country"} />
-      <TravelLocationInput onChangeEventHandler={setStayingAt} location={"city"} />
-      <TravelLocationInput onChangeEventHandler={setStayingAt} location={"state"} />
+      <h2>Staying At</h2>
+      {locations.map((location) => {
+        return (
+          <TravelLocationInput
+            key={location}
+            onChangeEventHandler={setStayingAt}
+            location={location}
+          />
+        );
+      })}
+
+      <h2>Dates of Travel</h2>
+      <span>From</span>
+      <TravelDatesInput travelStatus={"from"} onChangeEventHandler={setDates} />
+      <span>To</span>
+      <TravelDatesInput travelStatus={"to"} onChangeEventHandler={setDates} />
+
+      <Button label = {"Generate Travel Resources"} onButtonClick={generateTravelResources}/>
     </>
   );
 }
