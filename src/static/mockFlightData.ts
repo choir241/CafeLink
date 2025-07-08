@@ -1,4 +1,4 @@
-export const flightData = [
+export const flights = [
   {
     flight: {
       number: "DL432",
