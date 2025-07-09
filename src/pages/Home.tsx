@@ -1,4 +1,5 @@
 import TravelLocationForm from "../components/TravelLocationForm/TravelLocationForm";
+import TravelLocationSuggestions from "../components/TravelLocationForm/TravelLocationSuggestions";
 import { useState } from "react";
 
 export default function Home() {
@@ -26,10 +27,19 @@ export default function Home() {
     <>
       <TravelLocationForm
         props={{
+          stayingAt,
+          departingFrom,
           setDates,
           setDepartingFrom,
           setStayingAt,
           generateTravelResources,
+        }}
+      />
+      <TravelLocationSuggestions
+        props={{
+          dates,
+          departingFrom,
+          stayingAt,
         }}
       />
     </>
