@@ -11,13 +11,19 @@ export default function TravelCitySugggestions({
   city: string;
   selectLocationSuggestion: (location: string, locationData: string) => void;
 }) {
-
   const [cities, setCities] = useState<IMockLocationData[]>([]);
 
   useMemo(() => {
-    const findCities = findLocation({locationList: mockLocationData, location: "city", locationData: city})
+    const findCities = findLocation({
+      locationList: mockLocationData,
+      location: "city",
+      locationData: city,
+    });
 
-    const filteredList = filterOutDuplicates({locationList: findCities, location: "city"});
+    const filteredList = filterOutDuplicates({
+      locationList: findCities,
+      location: "city",
+    });
 
     setCities(filteredList);
   }, [city]);
@@ -26,11 +32,21 @@ export default function TravelCitySugggestions({
     <>
       {cities
         .map((location, index) => {
-          return <div onClick = {()=> 
-            {
-              location.city ? selectLocationSuggestion("city", location.city) : ""
-              setCities([])
-            }} key={index}>{location.city}</div>;
+          return (
+            <div
+              onClick={() => {
+                location.city
+                  ? selectLocationSuggestion("city", location.city)
+                  : "";
+                setTimeout(() => {
+                  setCities([]);
+                }, 50);
+              }}
+              key={index}
+            >
+              {location.city}
+            </div>
+          );
         })
         .slice(0, 10)}
     </>

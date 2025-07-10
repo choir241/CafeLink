@@ -14,18 +14,39 @@ export default function TravelStateSugggestions({
   const [states, setStates] = useState<IMockLocationData[]>([]);
 
   useEffect(() => {
-    const findStates = findLocation({locationList: mockLocationData, location: "state", locationData: state})
+    const findStates = findLocation({
+      locationList: mockLocationData,
+      location: "state",
+      locationData: state,
+    });
 
-    const filteredList = filterOutDuplicates({locationList: findStates, location: "state"});
+    const filteredList = filterOutDuplicates({
+      locationList: findStates,
+      location: "state",
+    });
 
     setStates(filteredList);
   }, [state]);
 
   return (
-    <>
+    <section className={`${states.length ? "" : "hidden"}`}>
       {states.map((location, index) => {
-        return <div key={index} onClick = {()=>location.state ? selectLocationSuggestion("state", location.state) : ""}>{location.state}</div>;
+        return (
+          <div
+            key={index}
+            onClick={() => {
+              location.state
+                ? selectLocationSuggestion("state", location.state)
+                : "";
+              setTimeout(() => {
+                setStates([]);
+              }, 50);
+            }}
+          >
+            {location.state}
+          </div>
+        );
       })}
-    </>
+    </section>
   );
 }

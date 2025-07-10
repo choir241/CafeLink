@@ -6,6 +6,7 @@ export default function TravelDatesInput({
   travelStatus: string
 }) {
   return (
-    <input type="date" onChange={(e) => onChangeEventHandler(travelStatus, e.target.value)} />
+    <input type="date" 
+    onChange={(e) => onChangeEventHandler(travelStatus, e.target.value)} />
   );
 }

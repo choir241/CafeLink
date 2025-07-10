@@ -30,6 +30,7 @@ export default function DepartingFromSection({
         <TravelLocationInput
           onChangeEventHandler={props.selectDepartingFromSuggestion}
           location={"city"}
+          travelData={props.departingFrom.city}
         />
         <TravelCitySugggestions
           selectLocationSuggestion={props.selectDepartingFromSuggestion}
@@ -41,6 +42,7 @@ export default function DepartingFromSection({
         <TravelLocationInput
           onChangeEventHandler={props.selectDepartingFromSuggestion}
           location={"country"}
+          travelData={props.departingFrom.country}
         />
         <TravelCountrySugggestions
           selectLocationSuggestion={props.selectDepartingFromSuggestion}
@@ -52,6 +54,7 @@ export default function DepartingFromSection({
         <TravelLocationInput
           onChangeEventHandler={props.selectDepartingFromSuggestion}
           location={"state"}
+          travelData={props.departingFrom.state}
         />
 
         <TravelStateSugggestions

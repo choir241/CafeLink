@@ -14,19 +14,39 @@ export default function TravelCountrySugggestions({
   const [countries, setCountries] = useState<IMockLocationData[]>([]);
 
   useEffect(() => {
-    const findCountries = 
-    findLocation({locationList: mockLocationData, location: "country", locationData: country})
-    
-    const filteredList = filterOutDuplicates({locationList: findCountries, location: "country"});
+    const findCountries = findLocation({
+      locationList: mockLocationData,
+      location: "country",
+      locationData: country,
+    });
+
+    const filteredList = filterOutDuplicates({
+      locationList: findCountries,
+      location: "country",
+    });
 
     setCountries(filteredList);
   }, [country]);
 
   return (
     <>
-      {countries.map((location, index) => {
-        return <div key={index} onClick = {()=>{selectLocationSuggestion("country", location.country)}}>{location.country}</div>;
-      }).slice(0,10)}
+      {countries
+        .map((location, index) => {
+          return (
+            <div
+              key={index}
+              onClick={() => {
+                selectLocationSuggestion("country", location.country);
+                setTimeout(() => {
+                  setCountries([]);
+                }, 50);
+              }}
+            >
+              {location.country}
+            </div>
+          );
+        })
+        .slice(0, 10)}
     </>
   );
 }
