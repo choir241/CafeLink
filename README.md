@@ -17,3 +17,4 @@ Features:
 - User is able to enter dates they're traveling for
 - User is able to click a button to generate resources - hotels, nearby restaurants, airlines, and transportations
 - User is able to see auto-suggested cities, countries, and states to choose from as they add values to the input fields
+- on selecting the auto-suggested card, it will generate the value in the respective input field and hide the suggestions

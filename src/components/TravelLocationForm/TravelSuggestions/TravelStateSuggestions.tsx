@@ -29,7 +29,7 @@ export default function TravelStateSugggestions({
   }, [state]);
 
   return (
-    <section className={`${states.length ? "" : "hidden"}`}>
+    <>
       {states.map((location, index) => {
         return (
           <div
@@ -47,6 +47,6 @@ export default function TravelStateSugggestions({
           </div>
         );
       })}
-    </section>
+    </>
   );
 }
