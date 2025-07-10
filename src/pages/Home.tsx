@@ -43,21 +43,33 @@ export default function Home() {
     to: "",
   });
 
-  function selectDepartingFromSuggestion(
-    location: string,
-    locationData: string,
-  ) {
+  function selectDepartingFromSuggestion({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) {
     setDepartingFrom((prev) => ({ ...prev, [location]: locationData }));
   }
 
-  function selectStayingAtSuggestion(location: string, locationData: string) {
+  function selectStayingAtSuggestion({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) {
     setStayingAt((prev) => ({ ...prev, [location]: locationData }));
   }
 
-  function selectDatesAtSuggestion(
-    travelStatus: string,
-    travelStatusData: string,
-  ) {
+  function selectDatesAtSuggestion({
+    travelStatus,
+    travelStatusData,
+  }: {
+    travelStatus: string;
+    travelStatusData: string;
+  }) {
     setDates((prev) => ({ ...prev, [travelStatus]: travelStatusData }));
   }
 

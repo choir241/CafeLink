@@ -9,7 +9,13 @@ export default function TravelCitySugggestions({
   selectLocationSuggestion,
 }: {
   city: string;
-  selectLocationSuggestion: (location: string, locationData: string) => void;
+  selectLocationSuggestion: ({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) => void;
 }) {
   const [cities, setCities] = useState<IMockLocationData[]>([]);
 
@@ -36,7 +42,10 @@ export default function TravelCitySugggestions({
             <div
               onClick={() => {
                 location.city
-                  ? selectLocationSuggestion("city", location.city)
+                  ? selectLocationSuggestion({
+                      location: "city",
+                      locationData: location.city,
+                    })
                   : "";
                 setTimeout(() => {
                   setCities([]);

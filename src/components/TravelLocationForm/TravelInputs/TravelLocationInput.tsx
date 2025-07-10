@@ -3,7 +3,13 @@ export default function TravelLocationInput({
   location,
   travelData,
 }: {
-  onChangeEventHandler: (location: string, locationData: string) => void;
+  onChangeEventHandler: ({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) => void;
   location: string;
   travelData: string;
 }) {
@@ -12,7 +18,9 @@ export default function TravelLocationInput({
       type="text"
       value={travelData}
       placeholder={location}
-      onChange={(e) => onChangeEventHandler(location, e.target.value)}
+      onChange={(e) =>
+        onChangeEventHandler({ location, locationData: e.target.value })
+      }
     />
   );
 }

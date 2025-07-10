@@ -11,10 +11,13 @@ interface IMockLocationData {
 
 export interface ITravelLocationForm {
   departingFrom: IMockLocationData;
-  selectDepartingFromSuggestion: (
-    location: string,
-    locationData: string,
-  ) => void;
+  selectDepartingFromSuggestion: ({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) => void;
 }
 
 export default function DepartingFromSection({

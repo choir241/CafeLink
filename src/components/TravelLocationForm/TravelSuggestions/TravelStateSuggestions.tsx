@@ -9,7 +9,13 @@ export default function TravelStateSugggestions({
   selectLocationSuggestion,
 }: {
   state: string;
-  selectLocationSuggestion: (location: string, locationData: string) => void;
+  selectLocationSuggestion: ({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) => void;
 }) {
   const [states, setStates] = useState<IMockLocationData[]>([]);
 
@@ -36,7 +42,10 @@ export default function TravelStateSugggestions({
             key={index}
             onClick={() => {
               location.state
-                ? selectLocationSuggestion("state", location.state)
+                ? selectLocationSuggestion({
+                    location: "state",
+                    locationData: location.state,
+                  })
                 : "";
               setTimeout(() => {
                 setStates([]);

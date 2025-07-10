@@ -3,10 +3,13 @@ import TravelDatesInput from "../TravelInputs/TravelDatesInput";
 export default function TravelDates({
   selectDatesAtSuggestion,
 }: {
-  selectDatesAtSuggestion: (
-    travelStatus: string,
-    travelStatusData: string,
-  ) => void;
+  selectDatesAtSuggestion: ({
+    travelStatus,
+    travelStatusData,
+  }: {
+    travelStatus: string;
+    travelStatusData: string;
+  }) => void;
 }) {
   return (
     <>

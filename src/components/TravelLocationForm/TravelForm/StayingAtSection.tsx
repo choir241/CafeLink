@@ -11,7 +11,13 @@ interface IMockLocationData {
 
 export interface ITravelLocationForm {
   stayingAt: IMockLocationData;
-  selectStayingAtSuggestion: (location: string, locationData: string) => void;
+  selectStayingAtSuggestion: ({
+    location,
+    locationData,
+  }: {
+    location: string;
+    locationData: string;
+  }) => void;
 }
 
 export default function StayingAtSection({
@@ -25,6 +31,7 @@ export default function StayingAtSection({
 
       <section>
         <TravelLocationInput
+          travelData={props.stayingAt.city}
           onChangeEventHandler={props.selectStayingAtSuggestion}
           location={"city"}
         />
@@ -36,6 +43,7 @@ export default function StayingAtSection({
 
       <section>
         <TravelLocationInput
+          travelData={props.stayingAt.country}
           onChangeEventHandler={props.selectStayingAtSuggestion}
           location={"country"}
         />
@@ -47,6 +55,7 @@ export default function StayingAtSection({
 
       <section>
         <TravelLocationInput
+          travelData={props.stayingAt.state}
           onChangeEventHandler={props.selectStayingAtSuggestion}
           location={"state"}
         />
