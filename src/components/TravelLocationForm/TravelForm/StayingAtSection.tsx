@@ -11,10 +11,7 @@ interface IMockLocationData {
 
 export interface ITravelLocationForm {
   stayingAt: IMockLocationData;
-  selectStayingAtSuggestion: (
-    location: string,
-    locationData: string
-  ) => void;
+  selectStayingAtSuggestion: (location: string, locationData: string) => void;
 }
 
 export default function StayingAtSection({

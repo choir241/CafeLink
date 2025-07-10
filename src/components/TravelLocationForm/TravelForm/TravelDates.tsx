@@ -5,7 +5,7 @@ export default function TravelDates({
 }: {
   selectDatesAtSuggestion: (
     travelStatus: string,
-    travelStatusData: string
+    travelStatusData: string,
   ) => void;
 }) {
   return (

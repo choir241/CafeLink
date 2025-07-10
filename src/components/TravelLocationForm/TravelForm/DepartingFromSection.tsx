@@ -13,7 +13,7 @@ export interface ITravelLocationForm {
   departingFrom: IMockLocationData;
   selectDepartingFromSuggestion: (
     location: string,
-    locationData: string
+    locationData: string,
   ) => void;
 }
 

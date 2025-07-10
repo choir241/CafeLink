@@ -1,6 +1,12 @@
 import { type IMockLocationData } from "../pages/Home";
 
-export function filterOutDuplicates({locationList, location}:{locationList: IMockLocationData[], location: "country" | "city" | "state"}) {
+export function filterOutDuplicates({
+  locationList,
+  location,
+}: {
+  locationList: IMockLocationData[];
+  location: "country" | "city" | "state";
+}) {
   const filteredDuplicates = [];
   const seenStates = new Set();
 

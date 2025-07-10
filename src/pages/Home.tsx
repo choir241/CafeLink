@@ -45,7 +45,7 @@ export default function Home() {
 
   function selectDepartingFromSuggestion(
     location: string,
-    locationData: string
+    locationData: string,
   ) {
     setDepartingFrom((prev) => ({ ...prev, [location]: locationData }));
   }
@@ -54,17 +54,20 @@ export default function Home() {
     setStayingAt((prev) => ({ ...prev, [location]: locationData }));
   }
 
-  function selectDatesAtSuggestion(travelStatus: string, travelStatusData: string){
-    setDates((prev)=> ({...prev, [travelStatus]: travelStatusData}));
+  function selectDatesAtSuggestion(
+    travelStatus: string,
+    travelStatusData: string,
+  ) {
+    setDates((prev) => ({ ...prev, [travelStatus]: travelStatusData }));
   }
 
-  function generateTravelResources(){
+  function generateTravelResources() {
     console.log(dates);
     console.log(departingFrom);
     console.log(stayingAt);
-    sessionStorage.setItem('departingFrom', JSON.stringify(departingFrom));
-    sessionStorage.setItem('stayingAt', JSON.stringify(stayingAt));
-    sessionStorage.setItem('dates', JSON.stringify(dates));
+    sessionStorage.setItem("departingFrom", JSON.stringify(departingFrom));
+    sessionStorage.setItem("stayingAt", JSON.stringify(stayingAt));
+    sessionStorage.setItem("dates", JSON.stringify(dates));
   }
 
   return (
@@ -83,8 +86,7 @@ export default function Home() {
         }}
       />
 
-      <TravelDates
-      selectDatesAtSuggestion = {selectDatesAtSuggestion}/>
+      <TravelDates selectDatesAtSuggestion={selectDatesAtSuggestion} />
 
       <Button
         label={"Generate Travel Resources"}
