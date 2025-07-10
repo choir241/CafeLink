@@ -16,3 +16,4 @@ Features:
 - User is able to enter location they're going to stay at
 - User is able to enter dates they're traveling for
 - User is able to click a button to generate resources - hotels, nearby restaurants, airlines, and transportations
+- User is able to see auto-suggested cities, countries, and states to choose from as they add values to the input fields
