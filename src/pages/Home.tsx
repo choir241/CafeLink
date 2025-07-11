@@ -22,7 +22,7 @@ export interface ITravelLocationInfo {
 
 export interface IMockLocationData {
   country: string;
-  city: string | null;
+  city: string;
   state: string | null;
 }
 
@@ -91,7 +91,7 @@ export default function Home() {
         }}
       />
 
-      <StayingAtSection
+      {/* <StayingAtSection
         props={{
           stayingAt,
           selectStayingAtSuggestion,
@@ -103,7 +103,7 @@ export default function Home() {
       <Button
         label={"Generate Travel Resources"}
         onButtonClick={generateTravelResources}
-      />
+      /> */}
     </>
   );
 }
