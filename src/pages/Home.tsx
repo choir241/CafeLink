@@ -82,6 +82,7 @@ export default function Home() {
     sessionStorage.setItem("dates", JSON.stringify(dates));
   }
 
+  console.log(departingFrom);
   return (
     <>
       <DepartingFromSection

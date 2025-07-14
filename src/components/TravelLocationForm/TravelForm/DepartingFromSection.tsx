@@ -32,6 +32,7 @@ export default function DepartingFromSection({
 
       <section>
         <TravelLocationInput
+          departingFrom={props.departingFrom}
           onChangeEventHandler={props.selectDepartingFromSuggestion}
           location={"city"}
           options={mockLocationData}
@@ -41,7 +42,6 @@ export default function DepartingFromSection({
           city={props.departingFrom.city}
         /> */}
       </section>
-
     </>
   );
 }
