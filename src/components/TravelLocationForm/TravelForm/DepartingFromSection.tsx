@@ -1,9 +1,4 @@
 import TravelLocationInput from "../TravelInputs/TravelLocationInput";
-import TravelCitySugggestions from "../TravelSuggestions/TravelCitySuggestions";
-import TravelCountrySugggestions from "../TravelSuggestions/TravelCountrySuggestions";
-import TravelStateSugggestions from "../TravelSuggestions/TravelStateSuggestions";
-import { mockLocationData } from "../../../static/mockLocationData";
-
 interface IMockLocationData {
   country: string;
   city: string;
@@ -26,22 +21,31 @@ export default function DepartingFromSection({
 }: {
   props: ITravelLocationForm;
 }) {
+
   return (
     <>
       <h2>Departing From</h2>
 
-      <section>
-        <TravelLocationInput
-          departingFrom={props.departingFrom}
-          onChangeEventHandler={props.selectDepartingFromSuggestion}
-          location={"city"}
-          options={mockLocationData}
-        />
-        {/* <TravelCitySugggestions
-          selectLocationSuggestion={props.selectDepartingFromSuggestion}
-          city={props.departingFrom.city}
-        /> */}
-      </section>
+      <TravelLocationInput
+        locationData={props.departingFrom.city}
+        onChangeEventHandler={props.selectDepartingFromSuggestion}
+        location={"city"}
+        prevDataFromOtherTravelInput={{location: "country", locationData: props.departingFrom.country}}
+      />
+
+      {/* <TravelLocationInput
+        departingFrom={props.departingFrom}
+        onChangeEventHandler={props.selectDepartingFromSuggestion}
+        location={"country"}
+        options={mockLocationData}
+      /> */}
+
+      <TravelLocationInput
+        locationData={props.departingFrom.country}
+        onChangeEventHandler={props.selectDepartingFromSuggestion}
+        location={"country"}
+        prevDataFromOtherTravelInput={{location: "city", locationData: props.departingFrom.city}}
+      />
     </>
   );
 }

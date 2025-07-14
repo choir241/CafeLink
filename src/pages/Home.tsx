@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DepartingFromSection from "../components/TravelLocationForm/TravelForm/DepartingFromSection";
-import StayingAtSection from "../components/TravelLocationForm/TravelForm/StayingAtSection";
-import TravelDates from "../components/TravelLocationForm/TravelForm/TravelDates";
-import Button from "../components/Button";
+// import StayingAtSection from "../components/TravelLocationForm/TravelForm/StayingAtSection";
+// import TravelDates from "../components/TravelLocationForm/TravelForm/TravelDates";
+// import Button from "../components/Button";
+
 export interface ITravelLocationInfo {
   stayingAt: {
     country: string;
@@ -72,17 +73,7 @@ export default function Home() {
   }) {
     setDates((prev) => ({ ...prev, [travelStatus]: travelStatusData }));
   }
-
-  function generateTravelResources() {
-    console.log(dates);
-    console.log(departingFrom);
-    console.log(stayingAt);
-    sessionStorage.setItem("departingFrom", JSON.stringify(departingFrom));
-    sessionStorage.setItem("stayingAt", JSON.stringify(stayingAt));
-    sessionStorage.setItem("dates", JSON.stringify(dates));
-  }
-
-  console.log(departingFrom);
+  
   return (
     <>
       <DepartingFromSection

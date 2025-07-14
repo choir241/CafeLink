@@ -1,13 +1,17 @@
+import { useState, useEffect } from "react";
+import { filterOutDuplicates } from "../../../hooks/filterOutDuplicates";
+import { findLocation } from "../../../hooks/findLocation";
+import { mockLocationData } from "../../../static/mockLocationData";
 import { type IMockLocationData } from "../../../pages/Home";
-import { useState } from "react";
 
 export default function TravelLocationInput({
-  departingFrom,
+  locationData,
+  prevDataFromOtherTravelInput,
   onChangeEventHandler,
   location,
-  options,
 }: {
-  departingFrom: { country: string; city: string; state: string };
+  locationData: string;
+  prevDataFromOtherTravelInput: { location: "country" | "city" | "state" ; locationData: string };
   onChangeEventHandler: ({
     location,
     locationData,
@@ -16,38 +20,73 @@ export default function TravelLocationInput({
     locationData: string;
   }) => void;
   location: "country" | "city" | "state";
-  options: IMockLocationData[];
 }) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [filteredLocations, setFilteredLocations] = useState<
+    IMockLocationData[]
+  >(
+    filterOutDuplicates({
+      locationList: mockLocationData,
+      location,
+    })
+  );
+
+  useEffect(() => {
+    if (isVisible && locationData) {
+      setFilteredLocations(
+        filterOutDuplicates({
+          locationList: findLocation({
+            locationList: mockLocationData,
+            locationData: locationData,
+            location: location,
+          }),
+          location: location,
+        })
+      );
+    } else if (isVisible && prevDataFromOtherTravelInput.locationData) {
+      setFilteredLocations(
+        filterOutDuplicates({
+          locationList: findLocation({
+            locationList: mockLocationData,
+            locationData: prevDataFromOtherTravelInput.locationData,
+            location: prevDataFromOtherTravelInput.location,
+          }),
+          location: prevDataFromOtherTravelInput.location,
+        })
+      );
+    }
+  }, [prevDataFromOtherTravelInput.locationData, locationData, isVisible]);
 
   return (
-    <div className="select-editable">
+    <div>
       <input
+        placeholder={location}
         onClick={() => setIsVisible(true)}
-        value={departingFrom[location]}
+        value={locationData}
         type="text"
         onChange={(e) =>
           onChangeEventHandler({ location, locationData: e.target.value })
         }
       />
-      {isVisible || (isVisible && departingFrom[location])
-        ? options
-            .map((option) => {
-              if (option[location]?.includes(departingFrom[location])) {
-                return (
-                  <div
-                    onClick={() => {
-                      onChangeEventHandler({
-                        location,
-                        locationData: option[location] ? option[location] : "",
-                      });
-                      setIsVisible(false);
-                    }}
-                  >
-                    {option[location]}
-                  </div>
-                );
-              }
+      {isVisible
+        ? filteredLocations
+            .map((locationObj, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={() => {
+                    onChangeEventHandler({
+                      location,
+                      locationData: locationObj[location]
+                        ? locationObj[location]
+                        : "",
+                    });
+                    setIsVisible(false);
+                  }}
+                >
+                  {locationObj[location]}
+                </div>
+              );
             })
             .slice(0, 10)
         : ""}
