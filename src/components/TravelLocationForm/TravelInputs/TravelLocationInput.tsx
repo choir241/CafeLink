@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { filterOutDuplicates } from "../../../hooks/filterOutDuplicates";
 import { findLocation } from "../../../hooks/findLocation";
 import { mockLocationData } from "../../../static/mockLocationData";
@@ -11,7 +11,10 @@ export default function TravelLocationInput({
   location,
 }: {
   locationData: string;
-  prevDataFromOtherTravelInput: { location: "country" | "city" | "state" ; locationData: string };
+  prevDataFromOtherTravelInput: {
+    location: "country" | "city" | "state";
+    locationData: string;
+  };
   onChangeEventHandler: ({
     location,
     locationData,
@@ -31,7 +34,7 @@ export default function TravelLocationInput({
     })
   );
 
-  useEffect(() => {
+  useMemo(() => {
     if (isVisible && locationData) {
       setFilteredLocations(
         filterOutDuplicates({
@@ -64,9 +67,18 @@ export default function TravelLocationInput({
         onClick={() => setIsVisible(true)}
         value={locationData}
         type="text"
-        onChange={(e) =>
-          onChangeEventHandler({ location, locationData: e.target.value })
-        }
+        onChange={(e) => {
+          if (!e.target.value) {
+            onChangeEventHandler({ location, locationData: "" });
+            setFilteredLocations(
+              filterOutDuplicates({
+                locationList: mockLocationData,
+                location,
+              })
+            );
+          }
+          onChangeEventHandler({ location, locationData: e.target.value });
+        }}
       />
       {isVisible
         ? filteredLocations

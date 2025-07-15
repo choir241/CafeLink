@@ -33,19 +33,22 @@ export default function DepartingFromSection({
         prevDataFromOtherTravelInput={{location: "country", locationData: props.departingFrom.country}}
       />
 
-      {/* <TravelLocationInput
-        departingFrom={props.departingFrom}
-        onChangeEventHandler={props.selectDepartingFromSuggestion}
-        location={"country"}
-        options={mockLocationData}
-      /> */}
-
       <TravelLocationInput
         locationData={props.departingFrom.country}
         onChangeEventHandler={props.selectDepartingFromSuggestion}
         location={"country"}
         prevDataFromOtherTravelInput={{location: "city", locationData: props.departingFrom.city}}
       />
+
+      {props.departingFrom.country.toLowerCase() === "usa" ? 
+      <TravelLocationInput
+        onChangeEventHandler={props.selectDepartingFromSuggestion}
+        location={"state"}
+        locationData = {props.departingFrom.state}
+        prevDataFromOtherTravelInput={{location: "country", locationData: props.departingFrom.country}}
+      />
+    :
+    ""}
     </>
   );
 }
