@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DepartingFromSection from "../components/TravelLocationForm/TravelForm/DepartingFromSection";
-// import StayingAtSection from "../components/TravelLocationForm/TravelForm/StayingAtSection";
-// import TravelDates from "../components/TravelLocationForm/TravelForm/TravelDates";
-// import Button from "../components/Button";
+import StayingAtSection from "../components/TravelLocationForm/TravelForm/StayingAtSection";
+import TravelDates from "../components/TravelLocationForm/TravelForm/TravelDates";
+import Button from "../components/Button";
 
 export interface ITravelLocationInfo {
   stayingAt: {
@@ -73,7 +73,17 @@ export default function Home() {
   }) {
     setDates((prev) => ({ ...prev, [travelStatus]: travelStatusData }));
   }
-  
+
+  function generateTravelResources() {
+    sessionStorage.setItem("dates", JSON.stringify(dates));
+    sessionStorage.setItem("departingFrom", JSON.stringify(departingFrom));
+    sessionStorage.setItem("stayingAt", JSON.stringify(stayingAt));
+
+    console.log(sessionStorage.getItem("dates"));
+    console.log(sessionStorage.getItem("departingFrom"));
+    console.log(sessionStorage.getItem("stayingAt"));
+  }
+
   return (
     <>
       <DepartingFromSection
@@ -83,7 +93,7 @@ export default function Home() {
         }}
       />
 
-      {/* <StayingAtSection
+      <StayingAtSection
         props={{
           stayingAt,
           selectStayingAtSuggestion,
@@ -95,7 +105,7 @@ export default function Home() {
       <Button
         label={"Generate Travel Resources"}
         onButtonClick={generateTravelResources}
-      /> */}
+      />
     </>
   );
 }
