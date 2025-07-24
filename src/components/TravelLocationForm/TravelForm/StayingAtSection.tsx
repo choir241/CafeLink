@@ -21,7 +21,6 @@ export default function StayingAtSection({
 }: {
   props: ITravelLocationForm;
 }) {
-
   return (
     <>
       <h2>Staying At</h2>

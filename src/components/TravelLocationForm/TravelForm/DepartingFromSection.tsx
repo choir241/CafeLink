@@ -21,7 +21,6 @@ export default function DepartingFromSection({
 }: {
   props: ITravelLocationForm;
 }) {
-
   return (
     <>
       <h2>Departing From</h2>
@@ -30,25 +29,35 @@ export default function DepartingFromSection({
         locationData={props.departingFrom.city}
         onChangeEventHandler={props.selectDepartingFromSuggestion}
         location={"city"}
-        prevDataFromOtherTravelInput={{location: "country", locationData: props.departingFrom.country}}
+        prevDataFromOtherTravelInput={{
+          location: "country",
+          locationData: props.departingFrom.country,
+        }}
       />
 
       <TravelLocationInput
         locationData={props.departingFrom.country}
         onChangeEventHandler={props.selectDepartingFromSuggestion}
         location={"country"}
-        prevDataFromOtherTravelInput={{location: "city", locationData: props.departingFrom.city}}
+        prevDataFromOtherTravelInput={{
+          location: "city",
+          locationData: props.departingFrom.city,
+        }}
       />
 
-      {props.departingFrom.country.toLowerCase() === "usa" ? 
-      <TravelLocationInput
-        onChangeEventHandler={props.selectDepartingFromSuggestion}
-        location={"state"}
-        locationData = {props.departingFrom.state}
-        prevDataFromOtherTravelInput={{location: "country", locationData: props.departingFrom.country}}
-      />
-    :
-    ""}
+      {props.departingFrom.country.toLowerCase() === "usa" ? (
+        <TravelLocationInput
+          onChangeEventHandler={props.selectDepartingFromSuggestion}
+          location={"state"}
+          locationData={props.departingFrom.state}
+          prevDataFromOtherTravelInput={{
+            location: "country",
+            locationData: props.departingFrom.country,
+          }}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

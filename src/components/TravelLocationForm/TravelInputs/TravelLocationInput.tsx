@@ -31,7 +31,7 @@ export default function TravelLocationInput({
     filterOutDuplicates({
       locationList: mockLocationData,
       location,
-    })
+    }),
   );
 
   useMemo(() => {
@@ -44,7 +44,7 @@ export default function TravelLocationInput({
             location: location,
           }),
           location: location,
-        })
+        }),
       );
     } else if (isVisible && prevDataFromOtherTravelInput.locationData) {
       setFilteredLocations(
@@ -55,7 +55,7 @@ export default function TravelLocationInput({
             location: prevDataFromOtherTravelInput.location,
           }),
           location: prevDataFromOtherTravelInput.location,
-        })
+        }),
       );
     }
   }, [prevDataFromOtherTravelInput.locationData, locationData, isVisible]);
@@ -74,7 +74,7 @@ export default function TravelLocationInput({
               filterOutDuplicates({
                 locationList: mockLocationData,
                 location,
-              })
+              }),
             );
           }
           onChangeEventHandler({ location, locationData: e.target.value });
